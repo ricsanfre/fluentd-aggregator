@@ -19,6 +19,6 @@ RUN apk add --no-cache --update --virtual .build-deps \
 USER fluent
 
 # COPY AGGREGATOR CONF FILES
-COPY ./conf/fluent.conf /fluentd/etc/
+COPY ./conf/fluentd.conf /fluentd/etc/
 COPY ./conf/forwarder.conf /fluentd/etc/
 COPY ./conf/prometheus.conf /fluentd/etc/
