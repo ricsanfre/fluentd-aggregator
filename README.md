@@ -13,6 +13,12 @@ The follogin plugins has been added to the default fluentd image
 - fluent-plugin-elasticsearch: ES as backend for routing the logs
 - fluent-plugin-prometheus: Enabling prometheus monitoring 
 
+## Elasticsearh plugin
+
+ When configuring fluent-plugin-elasticsearch, a specific sniffer class need to be configured for implementing reconnection logic to ES(`sniffer_class_name Fluent::Plugin::ElasticsearchSimpleSniffer`). See plugin documentation [fluent-plugin-elasticsearh: Sniffer Class Name](https://github.com/uken/fluent-plugin-elasticsearch#sniffer-class-name).
+
+ The path to the sniffer class need to be passed as parameter to `fluentd` command (-r option). Docker's `entrypoint.sh` has been updated to automatically provide the path to the sniffer class.
+
 
 Default Fluentd Configuration
 --------------
