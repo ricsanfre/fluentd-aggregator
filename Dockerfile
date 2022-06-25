@@ -28,3 +28,5 @@ COPY entrypoint.sh /bin/
 ENV FLUENTD_OPT=""
 
 USER fluent
+ENTRYPOINT ["tini",  "--", "/bin/entrypoint.sh"]
+CMD ["fluentd"]
