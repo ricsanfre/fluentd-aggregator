@@ -16,8 +16,6 @@ RUN apk add --no-cache --update --virtual .build-deps \
  && apk del .build-deps \
  && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 
-
-
 # COPY AGGREGATOR CONF FILES
 COPY ./conf/fluent.conf /fluentd/etc/
 COPY ./conf/forwarder.conf /fluentd/etc/
@@ -25,5 +23,8 @@ COPY ./conf/prometheus.conf /fluentd/etc/
 
 # COPY entry
 COPY entrypoint.sh /bin/
+
+# Environment variables
+ENV FLUENTD_OPT=""
 
 USER fluent
