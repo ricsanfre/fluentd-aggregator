@@ -35,7 +35,7 @@ jobs:
           platforms: linux/amd64
           push: true
           build-args: |
-            BASE_IMAGE=v1.14-debian-1
+            BASE_IMAGE=fluent/fluentd:v1.14-debian-1
           tags: ${{ github.repository }}:latest
 
       - name: Build amr64 and push image.
@@ -46,5 +46,5 @@ jobs:
           platforms: linux/amr64
           push: true
           build-args: |
-            BASE_IMAGE=v1.14-debian-arm64-1
+            BASE_IMAGE=fluent/fluentd:v1.14-debian-arm64-1
           tags: ${{ github.repository }}:latest
