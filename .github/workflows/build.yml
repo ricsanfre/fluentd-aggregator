@@ -27,11 +27,24 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push image.
+      - name: Build amd64 and push image.
         uses: docker/build-push-action@v2
         with:
           context: ./
           file: Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
+          platforms: linux/amd64
           push: true
+          build-args: |
+            BASE_IMAGE=v1.14-debian-1
+          tags: ${{ github.repository }}:latest
+
+      - name: Build amr64 and push image.
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: Dockerfile
+          platforms: linux/amr64
+          push: true
+          build-args: |
+            BASE_IMAGE=v1.14-debian-arm64-1
           tags: ${{ github.repository }}:latest
