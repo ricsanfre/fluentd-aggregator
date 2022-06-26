@@ -38,13 +38,13 @@ jobs:
             BASE_IMAGE=fluent/fluentd:v1.14-debian-1
           tags: ${{ github.repository }}:latest
 
-      - name: Build amr64 and push image.
+      - name: Build arm64 and push image.
         uses: docker/build-push-action@v2
         with:
           context: ./
           file: Dockerfile
-          platforms: linux/amr64
+          platforms: linux/arm64
           push: true
           build-args: |
             BASE_IMAGE=fluent/fluentd:v1.14-debian-arm64-1
-          tags: ${{ github.repository }}:latest
+          tags: ${{ github.repository }}-arm64:latest
