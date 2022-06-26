@@ -34,7 +34,6 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64, linux/arm64
           push: true
-          build-args:
           tags: ${{ github.repository }}:v1.14
 
       # - name: Build arm64 and push image.
