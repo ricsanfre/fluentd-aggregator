@@ -1,11 +1,7 @@
-ARG TARGETARCH=amd64
+ARG BASE_IMAGE=fluent/fluentd:v1.14-debian-1
 
-FROM fluent/fluentd:v1.14-debian-1 as base-amd64
 
-FROM fluent/fluentd:v1.14-debian-arm64-1 as base-arm64
-
-ARG TARGETARCH
-FROM base-${TARGETARCH}
+FROM $BASE_IMAGE
 
 # UPDATE BASE IMAGE WITH PLUGINS
 
