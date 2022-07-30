@@ -28,11 +28,12 @@ COPY ./conf/forwarder.conf /fluentd/etc/
 COPY ./conf/prometheus.conf /fluentd/etc/
 
 # COPY entry
-COPY entrypoint.sh /bin/
+COPY entrypoint.sh /fluentd/entrypoint.sh
 
 # Environment variables
 ENV FLUENTD_OPT=""
 
+# Run as fluent user. Do not need to have privileges to access /var/log directory
 USER fluent
-ENTRYPOINT ["tini",  "--", "/bin/entrypoint.sh"]
+ENTRYPOINT ["tini",  "--", "/fluentd/entrypoint.sh"]
 CMD ["fluentd"]
