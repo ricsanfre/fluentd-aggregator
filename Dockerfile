@@ -11,7 +11,8 @@ USER root
 RUN buildDeps="sudo make gcc g++ libc-dev" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
- && sudo gem install fluent-plugin-elasticsearch \
+ && sudo gem install elastic-transport --version 8.0.1 \
+ && sudo gem install fluent-plugin-elasticsearch  \
  && sudo gem install fluent-plugin-prometheus \
  && sudo gem sources --clear-all \
  && SUDO_FORCE_REMOVE=yes \
