@@ -11,7 +11,9 @@ Plugins Added
 
 The follogin plugins has been added to the default fluentd image
 - fluent-plugin-elasticsearch: ES as backend for routing the logs
-- fluent-plugin-prometheus: Enabling prometheus monitoring 
+- fluent-plugin-prometheus: Enabling prometheus monitoring
+- fluent-plugin-record-modifier: record_modifier filter faster and lightweight than embedded transform_record filter.
+- fluent-plugin-grafana-loki: Loki as backend for routing the logs
 
 ## Elasticsearh plugin
 
