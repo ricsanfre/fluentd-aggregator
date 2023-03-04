@@ -35,5 +35,5 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: true
           build-args: |
-            BASE_IMAGE=fluent/fluentd:v1.15.2-debian-1.0
-          tags: ${{ github.repository }}:v1.15.2-debian-1.0
+            BASE_IMAGE=fluent/fluentd:v1.15.3-debian-1.2
+          tags: ${{ github.repository }}:v1.15.3-debian-1.2

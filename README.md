@@ -9,7 +9,7 @@ Based on official [fluentd docker image](https://github.com/fluent/fluentd-docke
 Plugins Added
 ------------
 
-The follogin plugins has been added to the default fluentd image
+The following plugins has been added to the default fluentd image
 - fluent-plugin-elasticsearch: ES as backend for routing the logs
 - fluent-plugin-prometheus: Enabling prometheus monitoring
 - fluent-plugin-record-modifier: record_modifier filter faster and lightweight than embedded transform_record filter.
