@@ -11,8 +11,9 @@ USER root
 RUN buildDeps="sudo make gcc g++ libc-dev" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
- && sudo gem install fluent-plugin-elasticsearch  \
- && sudo gem install elasticsearch-xpack \
+ && sudo gem install elasticsearch -v '~> 7.0' \
+ && sudo gem install fluent-plugin-elasticsearch -v '~> 5.1.1' \
+ && sudo gem install elasticsearch-xpack -v '~> 7.0' \
  && sudo gem install fluent-plugin-prometheus \
  && sudo gem install fluent-plugin-record-modifier \
  && sudo gem install fluent-plugin-grafana-loki \
