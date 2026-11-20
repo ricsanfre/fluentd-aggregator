@@ -2,5 +2,18 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "description": "fluent/fluentd publishes debian, alpine, windows and -N variants of every release; only track the Debian base images the Dockerfile consumes (v1.20.1-debian-1.1, v1.18-debian-1, ...)",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "fluent/fluentd"
+      ],
+      "allowedVersions": "/^v?\\d+(\\.\\d+){0,2}-debian(-\\d+(\\.\\d+)?)?$/",
+      "groupName": "fluentd base image"
+    }
   ]
 }
