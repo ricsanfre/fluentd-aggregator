@@ -8,9 +8,33 @@ on:
       - master
   schedule:
     - cron: "10 1 * * 0"
+  # Manual trigger, so an image can be rebuilt without pushing a commit. It runs the
+  # release job when dispatched on master.
+  workflow_dispatch:
 
 jobs:
-  # If on master branch, build and release image.
+  # Pull requests: compile the Dockerfile without publishing anything, so a broken base
+  # image or plugin fails here instead of on master. Uses the Dockerfile's default TAG
+  # (the newest release) and a single platform to keep the feedback fast; the release
+  # job below still builds every version for amd64 and arm64.
+  build:
+    name: Build (no push)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+
+      - name: Build image.
+        uses: docker/build-push-action@v7
+        with:
+          context: ./
+          file: Dockerfile
+          platforms: linux/amd64
+          push: false
+          tags: ${{ github.repository }}:pr-${{ github.event.pull_request.number }}
+
+  # On master (merge, schedule or manual dispatch), build and release every version.
   release:
     name: Release
     runs-on: ubuntu-latest
