@@ -39,11 +39,22 @@ Multi-architecture build
 --------------
 Github actions have been configured to automatically build amd64 and arm64 docker images.
 
-This images are available in docker hub https://hub.docker.com/r/ricsanfre/fluentd-aggregator
+The images are published to GitHub Container Registry:
+
+    ghcr.io/ricsanfre/fluentd-aggregator:<tag>
+
+Tags mirror the fluentd base image they are built from (`v1.20.1-debian-1.1`,
+`v1.18-debian-1`, ...); there is no rolling `latest`. The workflow authenticates with its
+own `GITHUB_TOKEN`, so publishing needs no registry secret. **The package must be public**
+(Package settings → Change visibility → Public) for Kubernetes clusters to pull it without
+an `imagePullSecret`.
+
+The Docker Hub repository (https://hub.docker.com/r/ricsanfre/fluentd-aggregator) is no
+longer updated and is kept only as a fallback for older tags.
 
 How to use this image
 --------------
 
 To create an aggregator that collects logs from other forwarders
 
-docker run -d -p 24224:24224 -p 24224:24224/udp ricsanfre/fluentd-aggregator:latest
+    docker run -d -p 24224:24224 -p 24224:24224/udp ghcr.io/ricsanfre/fluentd-aggregator:v1.20.1-debian-1.1
